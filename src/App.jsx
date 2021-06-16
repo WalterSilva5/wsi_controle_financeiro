@@ -20,7 +20,7 @@ const App = () => (
           <Sobre />
         </Route>
         <Route path="*">
-          <h1>ERROR 404: PAGE NOT FOUND!</h1>
+          <Redirect to="/inicio" />
         </Route>
       </Switch>
     </div>
