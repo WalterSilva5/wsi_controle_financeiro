@@ -2,25 +2,24 @@ import {
   createSlice, configureStore,
 } from '@reduxjs/toolkit';
 
-const produtoState = {
-  produtos: [],
+const entradasState = {
+  entradas: [],
 };
 
-const produtoSlice = createSlice({
-  name: 'produtoSlice',
-  initialState: produtoState,
+const entradasSlice = createSlice({
+  name: 'entradaSlice',
+  initialState: entradasState,
   reducers: {
-    adicionarProduto(state, action) {
-      // eslint-disable-next-line no-param-reassign
-      state.produtos = action.payload;
+    updateEntradas(state, action) {
+      state.entradas.push(action.payload);
     },
   },
 });
 
 const store = configureStore({
-  reducer: { produtoState: produtoSlice.reducer },
+  reducer: { entradasState: entradasSlice.reducer },
 });
 
-export const produtoActions = produtoSlice.actions;
+export const entradasActions = entradasSlice.actions;
 
 export default store;

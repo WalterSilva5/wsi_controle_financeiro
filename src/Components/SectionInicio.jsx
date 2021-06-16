@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
-
 import InicioGastos from './SectionInicio/InicioGastos';
 
 const About = () => (

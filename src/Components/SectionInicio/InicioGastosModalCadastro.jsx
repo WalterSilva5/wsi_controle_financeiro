@@ -1,25 +1,34 @@
+/* eslint-disable use-isnan */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import $ from 'jquery';
+import { useSelector, useDispatch } from 'react-redux';
+import { entradasActions } from '../../Store/Store';
 
 const InicioGastosModalCadastro = () => {
   const [valor, setvalor] = React.useState(0);
   const [data, setdata] = React.useState(new Date());
   const [obs, setobs] = React.useState('');
 
+  const dispatch = useDispatch();
+  const entradasState = useSelector((state) => state.entradasState);
+
   const adicionarGasto = () => {
-    gastos.push({
-      valor,
-      data,
-      obs,
-      tipo: 's',
-    });
-    console.log(gastos);
+    dispatch(
+      entradasActions.updateEntradas(
+        {
+          valor,
+          data,
+          obs,
+          tipo: 'e',
+        },
+      ),
+    );
   };
 
   React.useEffect(() => {
     try {
       setvalor(parseFloat(valor));
-      if (isNan(valor) || valor === '') {
+      if (valor === NaN || valor === '') {
         setvalor(0);
       }
     } catch {
